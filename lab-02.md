@@ -20,8 +20,26 @@ plastic_waste <- read_csv("data/plastic-waste.csv")
 Remove this text, and add your answer for Exercise 1 here.
 
 ``` r
-# insert code here
+ggplot(data = plastic_waste, 
+       mapping = aes(x = plastic_waste_per_cap, 
+                     color = continent, 
+                     fill = continent)) +
+  geom_density(alpha = 0.5)
 ```
+
+    ## Warning: Removed 51 rows containing non-finite values (stat_density).
+
+![](lab-02_files/figure-gfm/plastic-waste-continent-1.png)<!-- -->
+
+##### Color, Fill, and Alpha:
+
+Color and fill are aesthetic of the plot because it adds extra elements
+into the plot. For example, without color/fill= continent, we will have
+single line instead of multiple lines that are drawn based on different
+continent. It’s like adding eyes on a face.
+
+Alpha, however, does not add extra elements but helps you to adjust the
+appearance of the plot. It’s like adjusting the size of eyes on a face.
 
 ### Exercise 2
 
