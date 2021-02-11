@@ -19,71 +19,112 @@ plastic_waste <- read_csv("data/plastic-waste.csv")
 
 ### Exercise 1
 
-Remove this text, and add your answer for Exercise 1 here.
-
 ```{r plastic-waste-continent}
 ggplot(data = plastic_waste, 
-       mapping = aes(x = plastic_waste_per_cap, 
-                     color = continent, 
-                     fill = continent)) +
-  geom_density(alpha = 0.5)
+       aes(x = plastic_waste_per_cap, fill = continent))+
+  geom_histogram()+
+facet_wrap (~continent, nrow = 3)+
+labs(
+  title = "Histogram"
+)
 ```
 
-##### Color, Fill, and Alpha:
-Color and fill are aesthetic of the plot because it adds extra elements into the plot. For example, without color/fill= continent, we will have single line instead of multiple lines that are drawn based on different continent. It's like adding eyes on a face.
-
-Alpha, however, does not add extra elements but helps you to adjust the appearance of the plot. It's like adjusting the size of eyes on a face.
+Africa seems to have the lowest plastic waste per capita. North America have relatively higher plastic waste per capita compared to other continents.
 
 ### Exercise 2
 
 ```{r plastic-waste-density}
-# insert code here
+ggplot(data = plastic_waste, 
+       mapping = aes(x = plastic_waste_per_cap, 
+                     color = continent, 
+                     fill = continent)) +
+  geom_density(alpha = 0.5)+
+  labs(
+    title = "Density Plot"
+  )
 ```
 
 ### Exercise 3
+Color and fill are aesthetic of the plot because it adds extra elements into the plot. For example, without color/fill= continent, we will have single line instead of multiple lines that are drawn based on different continent. It's like adding eyes on a face.
 
-Remove this text, and add your answer for Exercise 3 here.
+Alpha, however, does not add extra elements but helps you to adjust the appearance of the plot. It's like adjusting the size of eyes on a face.
+ 
 
 ### Exercise 4
 
-Remove this text, and add your answer for Exercise 4 here.
 
 ```{r plastic-waste-violin}
-# insert code here
+ggplot(data = plastic_waste, 
+       mapping = aes(x = continent, 
+                     y = plastic_waste_per_cap)) +
+  geom_violin()+
+  labs(
+    title = "Violin Plot"
+  )
 ```
+
+##### What do the violin plots reveal that box plots do not? What features are apparent in the box plots but not in the violin plots?
+
+Violin plots show the shape of distributions of each continents, which box plots don't. But box plots clearly show the mean and SD, which violin plots don't.
+
 
 ### Exercise 5
 
-Remove this text, and add your answer for Exercise 5 here.
 
 ```{r plastic-waste-mismanaged}
-# insert code here
+ggplot(data = plastic_waste, 
+       mapping = aes(x = mismanaged_plastic_waste, 
+                     y = plastic_waste_per_cap)) +
+  geom_point()+
+  labs(
+    title="Scatter Plot for Plastic Waste and Mismanaged Plastic Waste"
+  )
 ```
+
+No clear pattern to indicate the relationship between plastic waste per capita and mismanaged plastic waste per capita.
 
 ### Exercise 6
 
-Remove this text, and add your answer for Exercise 6 here.
 
 ```{r plastic-waste-mismanaged-continent}
-# insert code here
+ggplot(data = plastic_waste, 
+       mapping = aes(x = mismanaged_plastic_waste, 
+                     y = plastic_waste_per_cap,
+                     color = continent)) +
+  geom_point()+
+  labs(
+    title="Scatter Plot for Plastic Waste and Mismanaged Plastic Waste",
+    subtitle = "by continent"
+  )
 ```
 
 ### Exercise 7
 
-Remove this text, and add your answer for Exercise 7 here.
 
 ```{r plastic-waste-population-total}
-# insert code here
+ggplot(data = plastic_waste, 
+       mapping = aes(x = total_pop, 
+                     y = plastic_waste_per_cap)) +
+  geom_point()+
+  labs(
+    title="Total Population and Plastic Waste Per Capita"
+  )
 ```
 
 ```{r plastic-waste-population-coastal}
-# insert code here
+ggplot(data = plastic_waste, 
+       mapping = aes(x = coastal_pop, 
+                     y = plastic_waste_per_cap)) +
+  geom_point()+
+  labs(
+    title="Coastal Population and Plastic Waste Per Capita"
+  )
 ```
+
+None of these pairs of variables appear strong linear association.
 
 ### Exercise 8
 
-Remove this text, and add your answer for Exercise 8 here.
 
 ```{r recreate-viz}
-# insert code here
 ```

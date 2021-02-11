@@ -17,21 +17,44 @@ plastic_waste <- read_csv("data/plastic-waste.csv")
 
 ### Exercise 1
 
-Remove this text, and add your answer for Exercise 1 here.
+``` r
+ggplot(data = plastic_waste, 
+       aes(x = plastic_waste_per_cap, fill = continent))+
+  geom_histogram()+
+facet_wrap (~continent, nrow = 3)+
+labs(
+  title = "Histogram"
+)
+```
+
+    ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+
+    ## Warning: Removed 51 rows containing non-finite values (stat_bin).
+
+![](lab-02_files/figure-gfm/plastic-waste-continent-1.png)<!-- -->
+
+Africa seems to have the lowest plastic waste per capita. North America
+have relatively higher plastic waste per capita compared to other
+continents.
+
+### Exercise 2
 
 ``` r
 ggplot(data = plastic_waste, 
        mapping = aes(x = plastic_waste_per_cap, 
                      color = continent, 
                      fill = continent)) +
-  geom_density(alpha = 0.5)
+  geom_density(alpha = 0.5)+
+  labs(
+    title = "Density Plot"
+  )
 ```
 
     ## Warning: Removed 51 rows containing non-finite values (stat_density).
 
-![](lab-02_files/figure-gfm/plastic-waste-continent-1.png)<!-- -->
+![](lab-02_files/figure-gfm/plastic-waste-density-1.png)<!-- -->
 
-##### Color, Fill, and Alpha:
+### Exercise 3
 
 Color and fill are aesthetic of the plot because it adds extra elements
 into the plot. For example, without color/fill= continent, we will have
@@ -41,56 +64,95 @@ continent. It’s like adding eyes on a face.
 Alpha, however, does not add extra elements but helps you to adjust the
 appearance of the plot. It’s like adjusting the size of eyes on a face.
 
-### Exercise 2
-
-``` r
-# insert code here
-```
-
-### Exercise 3
-
-Remove this text, and add your answer for Exercise 3 here.
-
 ### Exercise 4
 
-Remove this text, and add your answer for Exercise 4 here.
-
 ``` r
-# insert code here
+ggplot(data = plastic_waste, 
+       mapping = aes(x = continent, 
+                     y = plastic_waste_per_cap)) +
+  geom_violin()+
+  labs(
+    title = "Violin Plot"
+  )
 ```
+
+    ## Warning: Removed 51 rows containing non-finite values (stat_ydensity).
+
+![](lab-02_files/figure-gfm/plastic-waste-violin-1.png)<!-- -->
+
+##### What do the violin plots reveal that box plots do not? What features are apparent in the box plots but not in the violin plots?
+
+Violin plots show the shape of distributions of each continents, which
+box plots don’t. But box plots clearly show the mean and SD, which
+violin plots don’t.
 
 ### Exercise 5
 
-Remove this text, and add your answer for Exercise 5 here.
-
 ``` r
-# insert code here
+ggplot(data = plastic_waste, 
+       mapping = aes(x = mismanaged_plastic_waste, 
+                     y = plastic_waste_per_cap)) +
+  geom_point()+
+  labs(
+    title="Scatter Plot for Plastic Waste and Mismanaged Plastic Waste"
+  )
 ```
+
+    ## Warning: Removed 51 rows containing missing values (geom_point).
+
+![](lab-02_files/figure-gfm/plastic-waste-mismanaged-1.png)<!-- -->
+
+No clear pattern to indicate the relationship between plastic waste per
+capita and mismanaged plastic waste per capita.
 
 ### Exercise 6
 
-Remove this text, and add your answer for Exercise 6 here.
-
 ``` r
-# insert code here
+ggplot(data = plastic_waste, 
+       mapping = aes(x = mismanaged_plastic_waste, 
+                     y = plastic_waste_per_cap,
+                     color = continent)) +
+  geom_point()+
+  labs(
+    title="Scatter Plot for Plastic Waste and Mismanaged Plastic Waste",
+    subtitle = "by continent"
+  )
 ```
+
+    ## Warning: Removed 51 rows containing missing values (geom_point).
+
+![](lab-02_files/figure-gfm/plastic-waste-mismanaged-continent-1.png)<!-- -->
 
 ### Exercise 7
 
-Remove this text, and add your answer for Exercise 7 here.
-
 ``` r
-# insert code here
+ggplot(data = plastic_waste, 
+       mapping = aes(x = total_pop, 
+                     y = plastic_waste_per_cap)) +
+  geom_point()+
+  labs(
+    title="Total Population and Plastic Waste Per Capita"
+  )
 ```
 
+    ## Warning: Removed 61 rows containing missing values (geom_point).
+
+![](lab-02_files/figure-gfm/plastic-waste-population-total-1.png)<!-- -->
+
 ``` r
-# insert code here
+ggplot(data = plastic_waste, 
+       mapping = aes(x = coastal_pop, 
+                     y = plastic_waste_per_cap)) +
+  geom_point()+
+  labs(
+    title="Coastal Population and Plastic Waste Per Capita"
+  )
 ```
+
+    ## Warning: Removed 51 rows containing missing values (geom_point).
+
+![](lab-02_files/figure-gfm/plastic-waste-population-coastal-1.png)<!-- -->
+
+None of these pairs of variables appear strong linear association.
 
 ### Exercise 8
-
-Remove this text, and add your answer for Exercise 8 here.
-
-``` r
-# insert code here
-```
