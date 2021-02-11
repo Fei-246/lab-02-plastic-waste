@@ -156,3 +156,36 @@ ggplot(data = plastic_waste,
 None of these pairs of variables appear strong linear association.
 
 ### Exercise 8
+
+``` r
+ggplot(data = plastic_waste %>%
+         filter (plastic_waste_per_cap < 3),
+       mapping = aes(x = coastal_pop/total_pop, 
+                     y = plastic_waste_per_cap,
+                     color = continent)) +
+  geom_point()+
+  scale_color_viridis_d()+
+  stat_smooth(color = "black")+
+  labs(
+    x = "Coastal population proportion (Coastal / total population)",
+    y = "Plastic Waste per capita",
+    fill = "Continent",
+    title="Plastic waste vs. coastal population proportion",
+    subtitle = "by continent")+
+theme_light()+
+theme(
+  panel.border = element_blank(),
+  panel.grid.major = element_line(size = 0.5, linetype = 'solid',
+                                colour = "grey90"), 
+  panel.grid.minor = element_line(size = 0.2, linetype = 'solid',
+                                colour = "grey90")
+)
+```
+
+    ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+
+    ## Warning: Removed 10 rows containing non-finite values (stat_smooth).
+
+    ## Warning: Removed 10 rows containing missing values (geom_point).
+
+![](lab-02_files/figure-gfm/recreate-viz-1.png)<!-- -->
